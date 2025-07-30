@@ -19,10 +19,17 @@ pub fn build(b: *std.Build) void {
     tree_sitter.addCSourceFiles(.{ .files = &.{"submodules/tree-sitter/lib/src/lib.c"}, .flags = &flags });
 
     addParser(b, tree_sitter, "zig", null);
-    addParser(b, tree_sitter, "markdown", "tree-sitter-markdown");
-    addParser(b, tree_sitter, "markdown", "tree-sitter-markdown-inline");
+    // addParser(b, tree_sitter, "markdown", "tree-sitter-markdown");
+    // addParser(b, tree_sitter, "markdown", "tree-sitter-markdown-inline");
 
     b.installArtifact(tree_sitter);
+
+    /////////////////////////////
+
+    const mod = b.addModule("treez", .{
+        .root_source_file = b.path("treez/treez.zig"),
+    });
+    mod.linkLibrary(tree_sitter);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
