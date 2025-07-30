@@ -9,7 +9,9 @@
     .paths = .{
         "build.zig",
         "build.zig.zon",
-        "submodules",
         "treez",
+        "submodules",
+        "submodules/tree-sitter",
+        "submodules/tree-sitter-zig",
     },
 }
